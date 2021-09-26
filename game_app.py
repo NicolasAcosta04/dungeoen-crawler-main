@@ -5,7 +5,7 @@ from main_menu_state import MainMenuState
 from settings_state import SettingsState
 from game_state import GameState
 
-#Test
+
 class GameApp:
 
     def __init__(self):
