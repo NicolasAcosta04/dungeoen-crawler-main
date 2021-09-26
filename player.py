@@ -11,8 +11,6 @@ class Player(pygame.sprite.Sprite):
         # self.colour = colour
         self.player_pos_x = player_pos_x
         self.player_pos_y = player_pos_y
-        self.width = 0
-        self.height = 0
         # self.player_pos = pygame.math.Vector2(player_pos_x, player_pos_y)
         self.speed = 500
         self.hp = 100
@@ -50,10 +48,7 @@ class Player(pygame.sprite.Sprite):
         self.right_idle = right_idle.images_at(
             [(0, 0, 48, 48), (48, 0, 48, 48), (96, 0, 48, 48), (144, 0, 48, 48), (192, 0, 48, 48)])
 
-        self.standing = self.down_idle[0]
-
-        self.width = 48
-        self.height = 48
+        # self.standing = self.down_idle[0]
 
     def draw(self, window_surface):
         # player_rect = pygame.Rect(self.player_pos_x, self.player_pos_y, 48, 48)
@@ -75,6 +70,10 @@ class Player(pygame.sprite.Sprite):
             self.player_pos_y += self.speed * time_delta
 
     def update(self, time_delta):
+        self.timeSinceFrame += time_delta
+        if self.timeSinceFrame >= self.timeBetweenSteps:
+            self.next_frame(time_delta)
+            self.timeSinceFrame -= self.timeBetweenSteps
         if self.w:
             self.player_pos_y -= self.speed * time_delta
         if self.s:
@@ -84,9 +83,6 @@ class Player(pygame.sprite.Sprite):
         if self.a:
             self.player_pos_x -= self.speed * time_delta
         self.timeSinceFrame += time_delta
-        if self.timeSinceFrame >= self.timeBetweenSteps:
-            self.next_frame(time_delta)
-            self.timeSinceFrame -= self.timeBetweenSteps
 
     def on_key_press(self, event):
         if event.type == pygame.KEYDOWN:
