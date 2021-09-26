@@ -1,15 +1,14 @@
 import pygame
-from player_sprites import *
 from spritesheet import *
 
 TIMER = pygame.time.Clock()
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, window_surface, colour, player_pos_x, player_pos_y):
+    def __init__(self, window_surface, player_pos_x, player_pos_y):
         super().__init__()
         self.window_surface = window_surface
-        self.colour = colour
+        # self.colour = colour
         self.player_pos_x = player_pos_x
         self.player_pos_y = player_pos_y
         self.width = 0
@@ -31,8 +30,11 @@ class Player(pygame.sprite.Sprite):
         self.direction = 0
         self.standing = 0
 
+        self.standing = None
         self.currentFrame = 0
         self.currentAnimation = []
+        self.timeSinceFrame = 0
+        self.timeBetweenSteps = 1/self.speed
 
     def player_sprite(self):
         down_idle = SpriteSheet('Foozle_2DC0009_Lucifer_Warrior_Pixel_Art/Down/Png/WarriorDownIdle.png')
@@ -48,6 +50,8 @@ class Player(pygame.sprite.Sprite):
         self.right_idle = right_idle.images_at(
             [(0, 0, 48, 48), (48, 0, 48, 48), (96, 0, 48, 48), (144, 0, 48, 48), (192, 0, 48, 48)])
 
+        self.standing = self.down_idle[0]
+
         self.width = 48
         self.height = 48
 
@@ -61,7 +65,14 @@ class Player(pygame.sprite.Sprite):
         self.currentFrame += 1
         if self.currentFrame >= len(self.currentAnimation):
             self.currentFrame = 0
-        self.player_pos_x += (self.speed * time_delta) or (-self.speed * time_delta)
+        if self.direction == 3:
+            self.player_pos_x += self.speed * time_delta
+        if self.direction == 2:
+            self.player_pos_x -= self.speed * time_delta
+        if self.direction == 0:
+            self.player_pos_y -= self.speed * time_delta
+        if self.direction == 1:
+            self.player_pos_y += self.speed * time_delta
 
     def update(self, time_delta):
         if self.w:
@@ -73,7 +84,7 @@ class Player(pygame.sprite.Sprite):
         if self.a:
             self.player_pos_x -= self.speed * time_delta
         self.timeSinceFrame += time_delta
-        if self.timeSincFrame >= self.timeBetweenSteps:
+        if self.timeSinceFrame >= self.timeBetweenSteps:
             self.next_frame(time_delta)
             self.timeSinceFrame -= self.timeBetweenSteps
 

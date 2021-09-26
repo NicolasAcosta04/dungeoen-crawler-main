@@ -20,6 +20,8 @@ class GameState:
         self.instructions_text = None
         self.instructions_text_pos_rect = None
 
+        self.player = None
+
         # self.hitbox = player.Player(self.window_surface, RED, 300, 500)
         # self.player1 = player.Player(self.window_surface, INVIS, 300, 500)
 
@@ -28,6 +30,7 @@ class GameState:
         self.running = True
         self.background_surf = pygame.Surface((800, 600))
         self.background_surf.fill((0, 0, 0))
+        self.player = player.Player(self.window_surface, 300, 500)
 
         # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
         # self.title_pos_rect = self.title_text.get_rect()
@@ -50,12 +53,18 @@ class GameState:
     def handle_events(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             self.transition_target = 'main_menu'
+        self.player.on_key_press(event)
+        self.player.on_key_release(event)
         # self.hitbox.on_key_press(event)
         # self.hitbox.on_key_release(event)
 
     def update(self, time_delta):
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
+        self.player.player_sprite()
+        self.player.draw(self.window_surface)
+        self.player.next_frame(time_delta)
+        self.player.update(time_delta)
         # self.hitbox.draw(self.window_surface)
         # self.hitbox.update(time_delta)
         # self.player1.draw()
