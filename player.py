@@ -78,22 +78,22 @@ class Player(pygame.sprite.Sprite):
     def draw(self, window_surface):
         # player_rect = pygame.Rect(self.player_pos_x, self.player_pos_y, 48, 48)
         # pygame.draw.rect(self.window_surface, self.colour, player_rect)
-        if self.direction == 0:
+        if self.direction == 0:  # and not self.w:
             self.currentAnimation = self.up_idle
         if self.direction == 0 and self.w:
             self.currentAnimation = self.up_walk
 
-        if self.direction == 1:
+        if self.direction == 1:  # and not self.s:
             self.currentAnimation = self.down_idle
         if self.direction == 1 and self.s:
             self.currentAnimation = self.down_walk
 
-        if self.direction == 2:
+        if self.direction == 2:  # and not self.a:
             self.currentAnimation = self.left_idle
         if self.direction == 2 and self.a:
             self.currentAnimation = self.left_walk
 
-        if self.direction == 3:
+        if self.direction == 3:  # and not self.d:
             self.currentAnimation = self.right_idle
         if self.direction == 3 and self.d:
             self.currentAnimation = self.right_walk

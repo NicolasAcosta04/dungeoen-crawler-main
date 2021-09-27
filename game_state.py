@@ -22,9 +22,6 @@ class GameState:
 
         self.player = None
 
-        # self.hitbox = player.Player(self.window_surface, RED, 300, 500)
-        # self.player1 = player.Player(self.window_surface, INVIS, 300, 500)
-
     def start(self):
         self.transition_target = None
         self.running = True
@@ -55,19 +52,14 @@ class GameState:
             self.transition_target = 'main_menu'
         self.player.on_key_press(event)
         self.player.on_key_release(event)
-        # self.hitbox.on_key_press(event)
-        # self.hitbox.on_key_release(event)
 
     def update(self, time_delta):
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
+        # call the player and the relevant functions
         self.player.player_sprite()
         self.player.draw(self.window_surface)
         self.player.update(time_delta)
-        # self.hitbox.draw(self.window_surface)
-        # self.hitbox.update(time_delta)
-        # self.player1.draw()
-        # self.player1.update(time_delta)
         # stick the title at the top
         # self.window_surface.blit(self.title_text, self.title_pos_rect)
         # stick the instructions below
