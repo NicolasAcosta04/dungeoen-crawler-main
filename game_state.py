@@ -63,7 +63,6 @@ class GameState:
         self.window_surface.blit(self.background_surf, (0, 0))
         self.player.player_sprite()
         self.player.draw(self.window_surface)
-        self.player.next_frame(time_delta)
         self.player.update(time_delta)
         # self.hitbox.draw(self.window_surface)
         # self.hitbox.update(time_delta)

@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.player_pos_x = player_pos_x
         self.player_pos_y = player_pos_y
         # self.player_pos = pygame.math.Vector2(player_pos_x, player_pos_y)
-        self.speed = 500
+        self.speed = 250
         self.hp = 100
 
         self.w = False
@@ -25,14 +25,14 @@ class Player(pygame.sprite.Sprite):
         self.left_idle = None
         self.right_idle = None
 
-        self.direction = 0
+        self.direction = 1
         self.standing = 0
 
         self.standing = None
         self.currentFrame = 0
         self.currentAnimation = []
-        self.timeSinceFrame = time
-        self.timeBetweenSteps = 1/self.speed
+        self.timeSinceFrame = 0
+        self.timeBetweenSteps = 1/5
 
     def player_sprite(self):
         down_idle = SpriteSheet('Foozle_2DC0009_Lucifer_Warrior_Pixel_Art/Down/Png/WarriorDownIdle.png')
@@ -53,27 +53,36 @@ class Player(pygame.sprite.Sprite):
     def draw(self, window_surface):
         # player_rect = pygame.Rect(self.player_pos_x, self.player_pos_y, 48, 48)
         # pygame.draw.rect(self.window_surface, self.colour, player_rect)
+        if self.direction == 0:
+            self.currentAnimation = self.up_idle
+        if self.direction == 1:
+            self.currentAnimation = self.down_idle
+        if self.direction == 2:
+            self.currentAnimation = self.left_idle
+        if self.direction == 3:
+            self.currentAnimation = self.right_idle
         frame = self.currentAnimation[self.currentFrame]
         window_surface.blit(frame, (self.player_pos_x, self.player_pos_y))
 
-    def next_frame(self, time_delta):
+    def next_frame(self):
         self.currentFrame += 1
         if self.currentFrame >= len(self.currentAnimation):
             self.currentFrame = 0
-        if self.direction == 3:
-            self.player_pos_x += self.speed * time_delta
-        if self.direction == 2:
-            self.player_pos_x -= self.speed * time_delta
-        if self.direction == 0:
-            self.player_pos_y -= self.speed * time_delta
-        if self.direction == 1:
-            self.player_pos_y += self.speed * time_delta
+        # if self.direction == 3:
+        #     self.player_pos_x += self.speed * time_delta
+        # if self.direction == 2:
+        #     self.player_pos_x -= self.speed * time_delta
+        # if self.direction == 0:
+        #     self.player_pos_y -= self.speed * time_delta
+        # if self.direction == 1:
+        #     self.player_pos_y += self.speed * time_delta
 
     def update(self, time_delta):
         self.timeSinceFrame += time_delta
         if self.timeSinceFrame >= self.timeBetweenSteps:
-            self.next_frame(time_delta)
-            self.timeSinceFrame -= self.timeBetweenSteps
+            self.timeSinceFrame = 0
+            self.next_frame()
+            # self.timeSinceFrame -= self.timeBetweenSteps
         if self.w:
             self.player_pos_y -= self.speed * time_delta
         if self.s:
@@ -82,7 +91,6 @@ class Player(pygame.sprite.Sprite):
             self.player_pos_x += self.speed * time_delta
         if self.a:
             self.player_pos_x -= self.speed * time_delta
-        self.timeSinceFrame += time_delta
 
     def on_key_press(self, event):
         if event.type == pygame.KEYDOWN:
