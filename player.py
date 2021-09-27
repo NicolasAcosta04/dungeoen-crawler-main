@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
         self.standing = None
         self.currentFrame = 0
         self.currentAnimation = []
-        self.timeSinceFrame = 0
+        self.timeSinceFrame = time
         self.timeBetweenSteps = 1/self.speed
 
     def player_sprite(self):
