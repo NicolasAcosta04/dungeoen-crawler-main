@@ -21,15 +21,15 @@ class Player(pygame.sprite.Sprite):
         self.s = False
         self.d = False
 
-        self.down_idle = None
-        self.up_idle = None
-        self.left_idle = None
-        self.right_idle = None
+        self.down_idle = []
+        self.up_idle = []
+        self.left_idle = []
+        self.right_idle: []
 
-        self.down_walk = None
-        self.up_walk = None
-        self.left_walk = None
-        self.right_walk = None
+        self.down_walk = []
+        self.up_walk = []
+        self.left_walk = []
+        self.right_walk = []
 
         # self.moving = 0
 
