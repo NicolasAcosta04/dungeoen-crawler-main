@@ -1,5 +1,6 @@
 import pygame
 import player
+import map
 
 RED = (200, 0, 0)
 INVIS = (0, 0, 0, 255)
@@ -20,6 +21,8 @@ class GameState:
         self.instructions_text = None
         self.instructions_text_pos_rect = None
 
+        self.map = None
+
         self.player = None
 
     def start(self):
@@ -28,6 +31,7 @@ class GameState:
         self.background_surf = pygame.Surface((800, 600))
         self.background_surf.fill((0, 0, 0))
         self.player = player.Player(self.window_surface, 300, 500)
+        self.map = map.Map(self.window_surface, 32)
 
         # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
         # self.title_pos_rect = self.title_text.get_rect()
@@ -57,6 +61,7 @@ class GameState:
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
         # call the player and the relevant functions
+        self.map.draw()
         self.player.draw(self.window_surface)
         self.player.update(time_delta)
         # stick the title at the top
