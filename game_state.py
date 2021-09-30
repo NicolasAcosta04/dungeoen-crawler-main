@@ -57,7 +57,6 @@ class GameState:
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
         # call the player and the relevant functions
-        self.player.player_sprite()
         self.player.draw(self.window_surface)
         self.player.update(time_delta)
         # stick the title at the top
