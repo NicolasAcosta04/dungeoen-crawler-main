@@ -5,6 +5,10 @@ from main_menu_state import MainMenuState
 from settings_state import SettingsState
 from game_state import GameState
 
+ICON = pygame.image.load('Troll Face.ico')
+pygame.display.set_caption('dungeoen')
+pygame.display.set_icon(ICON)
+
 
 class GameApp:
 
@@ -25,7 +29,7 @@ class GameApp:
 
     def run(self):
         while self.running:
-            time_delta = self.clock.tick(60)/1000.0
+            time_delta = self.clock.tick(60) / 1000.0
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
