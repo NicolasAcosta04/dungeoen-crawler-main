@@ -1,7 +1,7 @@
 import pygame
 from player_sprites import *
 
-#test
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, window_surface, player_pos_x, player_pos_y):
         super().__init__()
