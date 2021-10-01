@@ -16,7 +16,7 @@ class GameApp:
         pygame.init()
 
         self.window_surface = pygame.display.set_mode((800, 600))
-        self.ui_manager = pygame_gui.UIManager((800, 600))
+        self.ui_manager = pygame_gui.UIManager((800, 600), 'theme.json')
         self.clock = pygame.time.Clock()
         self.running = True
 
