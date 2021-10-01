@@ -9,6 +9,8 @@ class Player(pygame.sprite.Sprite):
         # self.colour = colour
         self.player_pos_x = player_pos_x
         self.player_pos_y = player_pos_y
+        self.x = player_pos_x
+        self.x = player_pos_y
         # self.player_pos = pygame.math.Vector2(player_pos_x, player_pos_y)
         self.speed = 250
         self.hp = 100
@@ -18,15 +20,15 @@ class Player(pygame.sprite.Sprite):
         self.s = False
         self.d = False
 
-        self.down_idle = None
-        self.up_idle = None
-        self.left_idle = None
-        self.right_idle = None
+        self.down_idle = []
+        self.up_idle = []
+        self.left_idle = []
+        self.right_idle = []
 
-        self.down_walk = None
-        self.up_walk = None
-        self.left_walk = None
-        self.right_walk = None
+        self.down_walk = []
+        self.up_walk = []
+        self.left_walk = []
+        self.right_walk = []
 
         self.moving = 0
 
@@ -40,22 +42,30 @@ class Player(pygame.sprite.Sprite):
     def draw(self, window_surface):
         if self.moving == 0:
             if self.direction == 1:
-                self.currentAnimation = down_idle
+                self.down_idle = down_idle
+                self.currentAnimation = self.down_idle
             if self.direction == 0:
-                self.currentAnimation = up_idle
+                self.up_idle = up_idle
+                self.currentAnimation = self.up_idle
             if self.direction == 2:
-                self.currentAnimation = left_idle
+                self.left_idle = left_idle
+                self.currentAnimation = self.left_idle
             if self.direction == 3:
-                self.currentAnimation = right_idle
+                self.right_idle = right_idle
+                self.currentAnimation = self.right_idle
 
         elif self.moving == 1:
             if self.direction == 0:
-                self.currentAnimation = up_walk
+                self.up_walk = up_walk
+                self.currentAnimation = self.up_walk
             if self.direction == 1:
-                self.currentAnimation = down_walk
+                self.down_walk = down_walk
+                self.currentAnimation = self.down_walk
             if self.direction == 2:
-                self.currentAnimation = left_walk
+                self.left_walk = left_walk
+                self.currentAnimation = self.left_walk
             if self.direction == 3:
+                self.right_walk = right_walk
                 self.currentAnimation = right_walk
 
         frame = self.currentAnimation[self.currentFrame]
@@ -81,12 +91,16 @@ class Player(pygame.sprite.Sprite):
             self.next_frame()
 
         if self.w:
+            self.moving = 1
             self.player_pos_y -= self.speed * time_delta
         if self.s:
+            self.moving = 1
             self.player_pos_y += self.speed * time_delta
         if self.d:
+            self.moving = 1
             self.player_pos_x += self.speed * time_delta
         if self.a:
+            self.moving = 1
             self.player_pos_x -= self.speed * time_delta
 
     def on_key_press(self, event):
