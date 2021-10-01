@@ -1,13 +1,13 @@
 import pygame
 import pygame_gui
 
-from main_menu_state import MainMenuState
-from settings_state import SettingsState
-from game_state import GameState
-
 ICON = pygame.image.load('Troll Face.ico')
 pygame.display.set_caption('dungeoen')
 pygame.display.set_icon(ICON)
+
+from main_menu_state import MainMenuState
+from settings_state import SettingsState
+from game_state import GameState
 
 
 class GameApp:
