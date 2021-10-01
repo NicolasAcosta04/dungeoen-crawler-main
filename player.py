@@ -61,6 +61,14 @@ class Player(pygame.sprite.Sprite):
         frame = self.currentAnimation[self.currentFrame]
         window_surface.blit(frame, (self.player_pos_x, self.player_pos_y))
 
+    def next_animation(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w or pygame.K_s or pygame.K_a or pygame.K_d:
+                self.currentAnimation = []
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_w or pygame.K_s or pygame.K_a or pygame.K_d:
+                self.currentAnimation = []
+
     def next_frame(self):
         self.currentFrame += 1
         if self.currentFrame >= len(self.currentAnimation):
@@ -84,21 +92,25 @@ class Player(pygame.sprite.Sprite):
     def on_key_press(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
+                self.next_animation(event)
                 self.w = True
                 self.moving = 1
                 self.currentFrame = 0
                 self.direction = 0
             elif event.key == pygame.K_s:
+                self.next_animation(event)
                 self.s = True
                 self.moving = 1
                 self.currentFrame = 0
                 self.direction = 1
             elif event.key == pygame.K_a:
+                self.next_animation(event)
                 self.a = True
                 self.moving = 1
                 self.currentFrame = 0
                 self.direction = 2
             elif event.key == pygame.K_d:
+                self.next_animation(event)
                 self.d = True
                 self.moving = 1
                 self.currentFrame = 0
@@ -107,18 +119,22 @@ class Player(pygame.sprite.Sprite):
     def on_key_release(self, event):
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w:
+                self.next_animation(event)
                 self.w = False
                 self.moving = 0
                 self.currentFrame = 0
             elif event.key == pygame.K_s:
+                self.next_animation(event)
                 self.s = False
                 self.moving = 0
                 self.currentFrame = 0
             elif event.key == pygame.K_a:
+                self.next_animation(event)
                 self.a = False
                 self.moving = 0
                 self.currentFrame = 0
             elif event.key == pygame.K_d:
+                self.next_animation(event)
                 self.d = False
                 self.moving = 0
                 self.currentFrame = 0
