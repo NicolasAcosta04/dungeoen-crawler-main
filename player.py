@@ -6,12 +6,10 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, window_surface, player_pos_x, player_pos_y):
         super().__init__()
         self.window_surface = window_surface
-        # self.colour = colour
         self.player_pos_x = player_pos_x
         self.player_pos_y = player_pos_y
         self.x = player_pos_x
         self.x = player_pos_y
-        # self.player_pos = pygame.math.Vector2(player_pos_x, player_pos_y)
         self.speed = 250
         self.hp = 100
 
