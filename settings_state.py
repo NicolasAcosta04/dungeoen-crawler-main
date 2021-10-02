@@ -19,7 +19,7 @@ class SettingsState:
 
     def start(self):
         self.transition_target = None
-        self.background_surf = pygame.Surface((800, 600))
+        self.background_surf = pygame.Surface((800, 640))
         self.background_surf.fill((0, 0, 0))
         self.title_text = self.title_font.render('Settings', True, (255, 255, 255))
         self.title_pos_rect = self.title_text.get_rect()

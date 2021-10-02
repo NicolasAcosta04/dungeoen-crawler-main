@@ -23,16 +23,15 @@ class GameState:
         self.instructions_text_pos_rect = None
 
         self.map = None
-
         self.player = None
 
     def start(self):
         self.transition_target = None
         self.running = True
-        self.background_surf = pygame.Surface((800, 600))
+        self.background_surf = pygame.Surface((800, 640))
         self.background_surf.fill((0, 0, 0))
         self.player = player.Player(self.window_surface, 300, 500)
-        self.map = map.Map(self.window_surface, 32)
+        self.map = map.Map(self.window_surface, 1)
 
         # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
         # self.title_pos_rect = self.title_text.get_rect()
@@ -47,6 +46,7 @@ class GameState:
     def stop(self):
         self.running = False
         self.background_surf = None
+        self.map = None
         # self.title_text = None
         # self.title_pos_rect = None
         # self.instructions_text = None
@@ -62,6 +62,9 @@ class GameState:
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
         # call the player and the relevant functions
+        self.map.load_images()
+        self.map.empty_level()
+        self.map.open_file()
         self.map.draw()
         self.player.draw(self.window_surface)
         self.player.update(time_delta)

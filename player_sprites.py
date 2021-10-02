@@ -1,7 +1,7 @@
 import pygame
 from spritesheet import *
 
-pygame.display.set_mode((800, 600))
+pygame.display.set_mode((800, 640))
 pygame.init()
 
 # idle animations

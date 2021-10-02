@@ -1,13 +1,13 @@
 import pygame
 import pygame_gui
 
-ICON = pygame.image.load('Troll Face.ico')
-pygame.display.set_caption('dungeoen')
-pygame.display.set_icon(ICON)
-
 from main_menu_state import MainMenuState
 from settings_state import SettingsState
 from game_state import GameState
+
+ICON = pygame.image.load('Troll Face.ico')
+pygame.display.set_caption('dungeoen')
+pygame.display.set_icon(ICON)
 
 
 class GameApp:
@@ -15,8 +15,8 @@ class GameApp:
     def __init__(self):
         pygame.init()
 
-        self.window_surface = pygame.display.set_mode((800, 600))
-        self.ui_manager = pygame_gui.UIManager((800, 600), 'theme.json')
+        self.window_surface = pygame.display.set_mode((800, 640))
+        self.ui_manager = pygame_gui.UIManager((800, 640), 'theme.json')
         self.clock = pygame.time.Clock()
         self.running = True
 
