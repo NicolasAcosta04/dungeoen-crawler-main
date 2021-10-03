@@ -107,9 +107,6 @@ while run:
     # save and load data
     if save_button.draw(screen):
         # save level data
-        # pickle_out = open(f'level{level}_data', 'wb')
-        # pickle.dump(world_data, pickle_out)
-        # pickle_out.close()
         with open(f'level{level}_data.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',')
             for row in world_data:
@@ -117,9 +114,6 @@ while run:
 
     if load_button.draw(screen):
         # load in level data
-        # world_data = []
-        # pickle_in = open(f'level{level}_data', 'rb')
-        # world_data = pickle.load(pickle_in)
         with open(f'level{level}_data.csv',  newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
             for x, row in enumerate(reader):
