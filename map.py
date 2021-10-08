@@ -10,7 +10,7 @@ class Map:
         self.rows = 20
         self.cols = 25
         self.tile_size = 32
-        self.tile_types = 4
+        self.tile_types = 5
         self.level = level
         self.r = 0
         self.world_data = []
@@ -34,6 +34,7 @@ class Map:
             for x, row in enumerate(reader):
                 for y, tile in enumerate(row):
                     self.world_data[x][y] = int(tile)
+        self.process_data(self.world_data)
 
     def process_data(self, data):
         #  iterate through each value in level data file
@@ -45,11 +46,10 @@ class Map:
                     img_rect.x = x * self.tile_size
                     img_rect.y = y * self.tile_size
                     tile_data = (img, img_rect)
-                    if 0 <= tile <= 3:
+                    if 0 <= tile <= 4:
                         self.obstacle_list.append(tile_data)
 
     def draw(self):
-        self.process_data(self.world_data)
         for tile in self.obstacle_list:
             self.window_surface.blit(tile[0], tile[1])
 

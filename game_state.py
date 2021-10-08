@@ -32,6 +32,9 @@ class GameState:
         self.background_surf.fill((0, 0, 0))
         self.player = player.Player(self.window_surface, 300, 500)
         self.map = map.Map(self.window_surface, 1)
+        self.map.load_images()
+        self.map.empty_level()
+        self.map.open_file()
 
         # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
         # self.title_pos_rect = self.title_text.get_rect()
@@ -62,9 +65,7 @@ class GameState:
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
         # call the player and the relevant functions
-        self.map.load_images()
-        self.map.empty_level()
-        self.map.open_file()
+
         self.map.draw()
         self.player.draw(self.window_surface)
         self.player.update(time_delta)
