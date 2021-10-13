@@ -10,7 +10,7 @@ class Map:
         self.rows = 20
         self.cols = 25
         self.tile_size = 32
-        self.tile_types = 5
+        self.tile_types = 6
         self.level = level
         self.r = 0
         self.world_data = []
@@ -46,7 +46,7 @@ class Map:
                     img_rect.x = x * self.tile_size
                     img_rect.y = y * self.tile_size
                     tile_data = (img, img_rect)
-                    if 0 <= tile <= 4:
+                    if 0 <= tile <= 5:
                         self.obstacle_list.append(tile_data)
 
     def draw(self):
