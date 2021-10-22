@@ -1,7 +1,6 @@
 import pygame
 import button
 import csv
-import pickle
 
 pygame.init()
 
@@ -28,7 +27,7 @@ current_tile = 0
 img_list = []
 for x in range(TILE_TYPES):
     img = pygame.image.load(f'Foozle_2DT0002_Lucifer_Tileset_1_Pixel_Art/Png/tile/{x}.png').convert_alpha()
-    img = pygame.transform.scale(img, (TILE_SIZE, TILE_SIZE))
+    img = pygame.transform.smoothscale(img, (TILE_SIZE, TILE_SIZE))
     img_list.append(img)
 
 save_img = pygame.image.load('save_btn.png').convert_alpha()
