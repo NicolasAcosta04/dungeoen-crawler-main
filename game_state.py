@@ -32,10 +32,11 @@ class GameState:
         self.background_surf.fill(BISQUE)
         self.player = player.Player(self.window_surface, 300, 500)
 
-        self.map = map_dict_draw.Map(self.window_surface, 1)
-        # self.map.load_images()
+        self.map = map_dict_draw.Map(self.window_surface, 1, 0)
         self.map.empty_floor()
-        self.map.open_file()
+        self.map.empty_wall()
+        self.map.open_floor_file()
+        self.map.open_wall_file()
 
         # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
         # self.title_pos_rect = self.title_text.get_rect()
@@ -69,6 +70,7 @@ class GameState:
 
         self.map.draw()
         self.player.draw(self.window_surface)
+        self.map.draw_wall()
         self.player.update(time_delta)
         # stick the title at the top
         # self.window_surface.blit(self.title_text, self.title_pos_rect)

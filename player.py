@@ -8,8 +8,6 @@ class Player(pygame.sprite.Sprite):
         self.window_surface = window_surface
         self.player_pos_x = player_pos_x
         self.player_pos_y = player_pos_y
-        self.x = player_pos_x
-        self.x = player_pos_y
         self.speed = 250
         self.hp = 100
 
@@ -101,10 +99,10 @@ class Player(pygame.sprite.Sprite):
             self.moving = 1
             self.player_pos_x -= self.speed * time_delta
 
-        if self.player_pos_x <= 0 - 20:
-            self.player_pos_x += self.speed * time_delta
+        # if self.player_pos_x <= 0 - 20:
+        #     self.player_pos_x += self.speed * time_delta
         # if self.player_pos_x >= 800 +-:
-            self.player_pos_x -= self.speed * time_delta
+        #     self.player_pos_x -= self.speed * time_delta
 
     def on_key_press(self, event):
         if event.type == pygame.KEYDOWN:
