@@ -1,6 +1,5 @@
 import pygame
 from player_sprites import *
-# player is lagging when map is drawn onto the screen, have no idea what is happening
 
 
 class Player(pygame.sprite.Sprite):

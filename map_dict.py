@@ -1,7 +1,7 @@
 import pygame
 
-# pygame.display.set_mode((800, 640))
-# pygame.init()
+pygame.display.set_mode((800, 640))
+pygame.init()
 img = pygame.image.load('Foozle_2DT0002_Lucifer_Tileset_1_Pixel_Art/Png/InteriorTileset.png')
 
 map_tiles = {

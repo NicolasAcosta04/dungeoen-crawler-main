@@ -1,11 +1,10 @@
 import pygame
-
 import player
-import map
+import map_dict_draw
 
 RED = (200, 0, 0)
-INVIS = (0, 0, 0, 255)
 BISQUE = "#FFE4C4"
+BLACK = (0, 0, 0)
 
 
 class GameState:
@@ -33,10 +32,10 @@ class GameState:
         self.background_surf.fill(BISQUE)
         self.player = player.Player(self.window_surface, 300, 500)
 
-        # self.map = map.Map(self.window_surface, 1)
+        self.map = map_dict_draw.Map(self.window_surface, 1)
         # self.map.load_images()
-        # self.map.empty_level()
-        # self.map.open_file()
+        self.map.empty_floor()
+        self.map.open_file()
 
         # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
         # self.title_pos_rect = self.title_text.get_rect()
@@ -68,7 +67,7 @@ class GameState:
         self.window_surface.blit(self.background_surf, (0, 0))
         # call the player and the relevant functions
 
-        # self.map.draw()
+        self.map.draw()
         self.player.draw(self.window_surface)
         self.player.update(time_delta)
         # stick the title at the top
