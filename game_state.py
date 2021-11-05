@@ -1,7 +1,7 @@
 import pygame
 import player
 import map_dict_draw
-
+# trying to draw different tiles in layers
 RED = (200, 0, 0)
 BISQUE = "#FFE4C4"
 BLACK = (0, 0, 0)
@@ -70,7 +70,7 @@ class GameState:
 
         self.map.draw()
         self.player.draw(self.window_surface)
-        self.map.draw_wall()
+        # self.map.draw_wall()
         self.player.update(time_delta)
         # stick the title at the top
         # self.window_surface.blit(self.title_text, self.title_pos_rect)

@@ -2,7 +2,7 @@ import pygame
 import csv
 
 
-class Map:
+class Map:  # class is initialized
     def __init__(self, window_surface, level, wall):
         self.window_surface = window_surface
         self.level = level
@@ -58,7 +58,7 @@ class Map:
         self.process_data(self.world_floor)
 
     def open_wall_file(self):
-        with open(f'level{self.wall}_data.csv', newline='') as csvfile:
+        with open(f'wall{self.wall}_data.csv', newline='') as csvfile:
             reader = csv.reader(csvfile, delimiter=',')
             for x, row in enumerate(reader):
                 for y, tile in enumerate(row):
@@ -97,7 +97,9 @@ class Map:
     def draw(self):
         for tile in self.floor_list:
             self.window_surface.blit(tile[0], tile[1])
-
-    def draw_wall(self):
         for tile in self.wall_list:
             self.window_surface.blit(tile[0], tile[1])
+
+    # def draw_wall(self):
+    #     for tile in self.wall_list:
+    #         self.window_surface.blit(tile[0], tile[1])
