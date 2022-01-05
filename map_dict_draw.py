@@ -16,6 +16,7 @@ class Map:  # class is initialized
             '3': self.img.subsurface(0, (4 * 32), 32, 32),
             '4': self.img.subsurface(32, 32, 32, 32),
             '5': self.img.subsurface(158, 154, 36, 70),  # wall
+            '6': self.img.subsurface(96, 0, 32, 32)
         }
         self.world_floor = []
         self.world_wall = []
@@ -82,6 +83,13 @@ class Map:  # class is initialized
                     img_rect.y = y * 70
                     tile_data = (img, img_rect)
                     self.wall_list.append(tile_data)
+                if int(tile) == 6:
+                    img = self.map_tiles.get(str(tile))
+                    img_rect = img.get_rect()
+                    img_rect.x = x * 32
+                    img_rect.y = y * 32
+                    tile_data = (img, img_rect)
+                    self.floor_list.append(tile_data)
 
     # def process_floor(self, data):
     #     for y, row in enumerate(data):

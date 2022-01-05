@@ -29,7 +29,7 @@ class GameState:
         self.transition_target = None
         self.running = True
         self.background_surf = pygame.Surface((800, 640))
-        self.background_surf.fill(BISQUE)
+        self.background_surf.fill(BLACK)
         self.player = player.Player(self.window_surface, 300, 500)
 
         self.map = map_dict_draw.Map(self.window_surface, 1, 0)
