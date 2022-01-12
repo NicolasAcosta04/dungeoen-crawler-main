@@ -67,12 +67,9 @@ class GameState:
         # clear the window to the background surface
         self.window_surface.blit(self.background_surf, (0, 0))
         # call the player and the relevant functions
-
         self.map.draw()
         self.player.draw(self.window_surface)
         # self.map.draw_wall()
         self.player.update(time_delta)
-        # stick the title at the top
         # self.window_surface.blit(self.title_text, self.title_pos_rect)
-        # stick the instructions below
         # self.window_surface.blit(self.instructions_text, self.instructions_text_pos_rect)

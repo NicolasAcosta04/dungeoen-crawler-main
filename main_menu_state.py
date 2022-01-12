@@ -52,7 +52,7 @@ class MainMenuState:
     def handle_events(self, event):
         if event.type == pygame.USEREVENT and event.user_type == UI_BUTTON_PRESSED:
             if event.ui_element == self.start_game_button:
-                self.transition_target = 'game'
+                self.transition_target = 'game'  # starts the game when the start game button is pressed
             elif event.ui_element == self.settings_button:
                 self.transition_target = 'settings'
             elif event.ui_element == self.quit_button:
