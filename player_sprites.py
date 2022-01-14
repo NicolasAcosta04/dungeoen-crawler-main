@@ -1,6 +1,7 @@
 import pygame
-from spritesheet import *
+from spritesheet import *  # imports the SpriteSheet class from spritesheet.py
 
+#  this program loads all of the spritesheets used for the player animation
 pygame.display.set_mode((800, 640))
 pygame.init()
 

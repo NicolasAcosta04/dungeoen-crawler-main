@@ -15,8 +15,8 @@ class GameApp:
     def __init__(self):
         pygame.init()
 
-        self.window_surface = pygame.display.set_mode((800, 640))  # creates the window
-        self.ui_manager = pygame_gui.UIManager((800, 640), 'theme.json')  # creates UI and includes any themes inside
+        self.window_surface = pygame.display.set_mode((1200, 800))  # creates the window
+        self.ui_manager = pygame_gui.UIManager((1200, 800), 'theme.json')  # creates UI and includes any themes inside
         # a json file as one of the arguments
         self.clock = pygame.time.Clock()
         self.running = True  # Boolean condition for the while loop running the program.
@@ -36,6 +36,8 @@ class GameApp:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:  # if a user closes the window, the program will stop running
                     self.running = False
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.running = False  # user can close window with the esc key
 
                 self.ui_manager.process_events(event)
 
