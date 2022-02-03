@@ -36,8 +36,8 @@ class GameApp:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:  # if a user closes the window, the program will stop running
                     self.running = False
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    self.running = False  # user can close window with the esc key
+                # elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    # self.running = False  # user can close window with the esc key
 
                 self.ui_manager.process_events(event)
 
