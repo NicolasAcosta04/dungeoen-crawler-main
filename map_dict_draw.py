@@ -85,4 +85,4 @@ class Map:  # class is initialized
         for tile in self.floor_list:
             self.window_surface.blit(tile[0], tile[1])  # draws all the tiles in the floor list
         for tile in self.wall_list:
-            self.window_surface.blit(tile[0], tile[1]) # draws all the tiles in the wall list
+            self.window_surface.blit(tile[0], tile[1])  # draws all the tiles in the wall list
