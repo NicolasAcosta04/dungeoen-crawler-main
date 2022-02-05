@@ -52,5 +52,3 @@ class SettingsState:  # class is initialized
         self.window_surface.blit(self.title_text, self.title_pos_rect)
 
         self.ui_manager.draw_ui(self.window_surface)  # Draw the UI Bits
-
-
