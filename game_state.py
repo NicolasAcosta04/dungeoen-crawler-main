@@ -12,14 +12,7 @@ class GameState:  # class is initialized
         self.window_surface = window_surface  # variable has window_surface parameter that is used
         self.running = True
 
-        self.title_font = pygame.font.Font(None, 64)
-        self.instructions_font = pygame.font.Font(None, 32)
-
         self.background_surf = None
-        self.title_text = None
-        self.title_pos_rect = None
-        self.instructions_text = None
-        self.instructions_text_pos_rect = None
 
         self.map = None
         self.player = None
@@ -37,24 +30,11 @@ class GameState:  # class is initialized
         self.map.open_floor_file()
         self.map.open_wall_file()
 
-        # self.title_text = self.title_font.render('The Game', True, (255, 255, 255))
-        # self.title_pos_rect = self.title_text.get_rect()
-        # self.title_pos_rect.center = (400, 50)
-        #
-        # self.instructions_text = self.instructions_font.render('Press ESC to return to main menu',
-        #                                                        True, (255, 255, 255))
-        #
-        # self.instructions_text_pos_rect = self.instructions_text.get_rect()
-        # self.instructions_text_pos_rect.center = (400, 100)
-
     def stop(self):
         self.running = False
         self.background_surf = None
         self.map = None
-        # self.title_text = None
-        # self.title_pos_rect = None
-        # self.instructions_text = None
-        # self.instructions_text_pos_rect = None
+        self.player = None
 
     def handle_events(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
@@ -68,7 +48,4 @@ class GameState:  # class is initialized
         # call the player and the relevant functions
         self.map.draw()
         self.player.draw(self.window_surface)
-        # self.map.draw_wall()
         self.player.update(time_delta)
-        # self.window_surface.blit(self.title_text, self.title_pos_rect)
-        # self.window_surface.blit(self.instructions_text, self.instructions_text_pos_rect)

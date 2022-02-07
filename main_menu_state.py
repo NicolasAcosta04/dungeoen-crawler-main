@@ -57,6 +57,8 @@ class MainMenuState:  # class is initialized
                 self.transition_target = 'settings'  # goes to the settings menu when settings button is pressed
             elif event.ui_element == self.quit_button:
                 self.transition_target = 'quit'  # quits game and closes window when quit button is pressed
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            self.transition_target = 'quit'
 
     def update(self, time_delta):
         self.window_surface.blit(self.background_surf, (0, 0))  # clear the window to the background surface
