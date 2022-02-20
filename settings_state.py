@@ -19,7 +19,7 @@ class SettingsState:  # class is initialized
 
     def start(self):
         self.transition_target = None
-        self.background_surf = pygame.Surface((800, 600))  # 800 640, creates background
+        self.background_surf = pygame.Surface((800, 640))  # 800 640, creates background
         self.background_surf.fill((0, 0, 0))  # fills the background in the colour black
         self.title_text = self.title_font.render('Settings', True, (255, 255, 255))  # renders the text
         self.title_pos_rect = self.title_text.get_rect()  # positions the text in the desired position

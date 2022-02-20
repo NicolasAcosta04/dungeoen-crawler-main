@@ -15,8 +15,8 @@ class GameApp:
     def __init__(self):
         pygame.init()
 
-        self.window_surface = pygame.display.set_mode((800, 600))  # creates the window
-        self.ui_manager = pygame_gui.UIManager((800, 600), 'theme.json')  # creates UI and includes any themes inside
+        self.window_surface = pygame.display.set_mode((800, 640))  # creates the window
+        self.ui_manager = pygame_gui.UIManager((800, 640), 'theme.json')  # creates UI and includes any themes inside
         # a json file as one of the arguments
         self.clock = pygame.time.Clock()
         self.running = True  # Boolean condition for the while loop running the program.
