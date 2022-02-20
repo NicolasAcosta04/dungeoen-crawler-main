@@ -21,7 +21,7 @@ class MainMenuState:  # class is initialized
 
     def start(self):
         self.transition_target = None
-        self.background_surf = pygame.Surface((1200, 800))  # creates the background
+        self.background_surf = pygame.Surface((800, 600))  # creates the background
         self.background_surf.fill((0, 0, 0))  # fills it in black
         self.title_text = self.title_font.render('Main Menu', True, (255, 255, 255))  # initialises text on the screen
         self.title_pos_rect = self.title_text.get_rect()  # 027 and 028 position the title in the desired location

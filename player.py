@@ -1,4 +1,3 @@
-import pygame
 from player_sprites import *
 
 
@@ -62,7 +61,7 @@ class Player(pygame.sprite.Sprite):  # class is initialized
                 self.currentAnimation = self.left_walk
             if self.direction == 3:
                 self.right_walk = right_walk
-                self.currentAnimation = right_walk
+                self.currentAnimation = self.right_walk
 
         frame = self.currentAnimation[self.currentFrame]  # local variable is assigned the current animation with the
         # current frame as the index
@@ -102,11 +101,6 @@ class Player(pygame.sprite.Sprite):  # class is initialized
         if self.a:
             self.moving = 1
             self.player_pos_x -= self.speed * time_delta
-
-        # if self.player_pos_x <= 0 - 32:
-        #     self.player_pos_x += self.speed * time_delta
-        # if self.player_pos_x >= 800 +-:
-        #     self.player_pos_x -= self.speed * time_delta
 
     def on_key_press(self, event):  # this method handles events that are triggered when a key is pressed down
         if event.type == pygame.KEYDOWN:

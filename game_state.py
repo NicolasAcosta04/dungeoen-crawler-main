@@ -20,11 +20,11 @@ class GameState:  # class is initialized
     def start(self):
         self.transition_target = None
         self.running = True
-        self.background_surf = pygame.Surface((1200, 800))  # 800 640
+        self.background_surf = pygame.Surface((800, 600))  # 800 640
         self.background_surf.fill(BLACK)
         self.player = player.Player(self.window_surface, 300, 500)
 
-        self.map = map_dict_draw.Map(self.window_surface, 1, 0)
+        self.map = map_dict_draw.Map(self.window_surface, 0, 0)
         self.map.empty_floor()
         self.map.empty_wall()
         self.map.open_floor_file()
