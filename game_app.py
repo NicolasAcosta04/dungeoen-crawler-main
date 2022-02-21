@@ -6,7 +6,7 @@ from settings_state import SettingsState
 from game_state import GameState
 
 ICON = pygame.image.load('Troll Face.ico')  # assigns icon image to a variable
-pygame.display.set_caption('dungeoen')  # changes the caption
+pygame.display.set_caption('dungeoen crawler')  # changes the caption
 pygame.display.set_icon(ICON)  # changes the icon
 
 
